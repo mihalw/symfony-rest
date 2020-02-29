@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rider{% endblock %}
+
+{% block body %}
+    <h1>Rider</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Rider ID</th>
+                <td>{{ rider.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ rider.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ rider.surname }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ rider.country }}</td>
+            </tr>
+            <tr>
+                <th>Year of birth</th>
+                <td>{{ rider.yearOfBirth }}</td>
+            </tr>
+            <tr>
+                <th>Team</th>
+                <td>{{ rider.team }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+    <a href="{{ path('ridersInTeam_show', {'id': team.id}) }}">Back to {{team.name}} riders list</a><br/>
+    
+{% endblock %}

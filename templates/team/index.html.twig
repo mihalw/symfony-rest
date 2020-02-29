@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team index{% endblock %}
+
+{% block body %}
+    <h1>Teams</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.id }}</td>
+                <td>{{ team.name }}</td>
+                <td>
+                    <a href="{{ path('team_show', {'id': team.id}) }}">Show more</a>
+                    <a href="{{ path('team_edit', {'id': team.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br/><a href="{{ path('team_new') }}">Create new team</a><br/>
+    <br/><a href="{{ path('rider_index') }}">Go to riders list</a><br/>
+    <a href="{{ path('transfer_index') }}">Go to transfers list</a>
+    <br/><a href="{{ path('stadium_index') }}">Go to stadiums list</a>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rider index{% endblock %}
+
+{% block body %}
+
+    <h1>All riders</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rider ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Country</th>
+                <th>Year_of_birth</th>
+                <th>Team</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for rider in pagination %}
+            <tr>
+                <td>{{ rider.id }}</td>
+                <td>{{ rider.name }}</td>
+                <td>{{ rider.surname }}</td>
+                <td>{{ rider.country }}</td>
+                <td>{{ rider.yearOfBirth }}</td>
+                <td>{{ rider.team }}</td>
+                <td>
+                    <a href="{{ path('rider_show', {'id': rider.id}) }}">Show more</a>
+                    <a href="{{ path('rider_edit', {'id': rider.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No records found</td>
+            </tr>
+
+        {% endfor %}  
+        </tbody>
+    </table>
+    
+    <br/><a href="{{ path('rider_new') }}">Create new rider</a>
+    <div>
+    {{ knp_pagination_render(pagination) }}
+    </div>
+    <div>
+    All riders: {{ pagination.getTotalItemCount }}
+    </div>
+
+    <br/><a href="{{ path('team_index') }}">Go to teams list</a><br/>
+    <a href="{{ path('transfer_index') }}">Go to transfers list</a>
+    <br/><a href="{{ path('stadium_index') }}">Go to stadiums list</a>
+
+{% endblock %}

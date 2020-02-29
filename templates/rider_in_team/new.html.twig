@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RiderInTeam{% endblock %}
+
+{% block body %}
+    <h1>Create new RiderInTeam</h1>
+
+    {{ include('rider_in_team/_form.html.twig') }}
+
+    <a href="{{ path('rider_in_team_index') }}">back to list</a>
+{% endblock %}

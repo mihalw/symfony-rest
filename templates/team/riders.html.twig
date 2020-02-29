@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team riders{% endblock %}
+
+{% block body %}
+    <h1>{{ team.name }} riders</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rider in pagination %}
+            <tr>
+                <td>{{ rider.id }}</td>
+                <td>{{ rider.name }}</td>
+                <td>{{ rider.surname }}</td>
+                <td>
+                    <a href="{{ path('riderInTeam_show', {'id2': rider.id, 'id': team.id}) }}">Show more</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <br/><a href="{{ path('team_show', {'id': team.id}) }}">Back to information about {{team.name}} </a><br/>
+    <div class="navigation"> 
+    {{ knp_pagination_render(pagination) }} 
+    </div> 
+
+{% endblock %}

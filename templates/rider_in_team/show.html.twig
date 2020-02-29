@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Riders in team{% endblock %}
+
+{% block body %}
+    <h1>Riders in {{ team.id }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rider_in_team.id }}</td>
+            </tr>
+            <tr>
+                <th>Rider_id</th>
+                <td>{{ rider_in_team.riderId }}</td>
+            </tr>
+            <tr>
+                <th>Team_id</th>
+                <td>{{ rider_in_team.teamId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('rider_in_team_index') }}">back to list</a>
+
+    <a href="{{ path('rider_in_team_edit', {'id': rider_in_team.id}) }}">edit</a>
+
+    {{ include('rider_in_team/_delete_form.html.twig') }}
+{% endblock %}
